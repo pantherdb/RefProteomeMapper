@@ -57,11 +57,12 @@ foreach $line (@linesArray) {
     $line=~s/\r//g;
     #chomp $line;
     my ($id, @rest)=split(/\t/, $line);
+    my $foo = join("\t", @rest);
     if (defined $pthr{$id}){
-        $count1++;
-        my $pthr=$pthr{$id};
-        my $foo = join("\t", @rest);
-        print "$id\t$pthr\t$foo\n";
+	$count1++;
+	my $pthr=$pthr{$id};
+
+	print "$id\t$pthr\t$foo\n";
     }else{
         $count2++;
         print "$id\tNOHIT\t$foo\n";
