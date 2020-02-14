@@ -42,7 +42,7 @@ print "Content-Type: text/html\n\n";
 
 my %pthr;
 my $panther_classification_directory = $config->{panther_classification_directory};
-my $orgFile = "$panther_classification_directory/$org";
+my $orgFile = "$panther_classification_directory/panther_classification/$org";
 open (FH, $orgFile);
 while (my $line=<FH>){
     chomp $line;
