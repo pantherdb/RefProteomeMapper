@@ -41,8 +41,8 @@ print "Content-Type: text/html\n\n";
 
 
 my %pthr;
-my $protein_classification_directory = $config->{protein_classification_directory};
-my $orgFile = "$protein_classification_directory/$org";
+my $panther_classification_directory = $config->{panther_classification_directory};
+my $orgFile = "$panther_classification_directory/$org";
 open (FH, $orgFile);
 while (my $line=<FH>){
     chomp $line;
