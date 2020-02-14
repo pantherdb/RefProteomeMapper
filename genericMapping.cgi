@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 # map_panther.pl - Generic mapping program
 
+use YAML::XS 'LoadFile';
 
 my %FORM;
 if ($ENV{'REQUEST_METHOD'} eq 'GET') {
@@ -15,6 +16,8 @@ foreach $pair (@pairs) {
   local($name, $value) = split(/=/, $pair);
   $FORM{$name} = $value;
 }
+
+my $config = LoadFile('config.yaml');
 
 my $org = $FORM{'organism'};
 my $fileContents = $FORM{'fileContents'};
@@ -38,7 +41,8 @@ print "Content-Type: text/html\n\n";
 
 
 my %pthr;
-my $orgFile = "panther_classification/$org";
+my $protein_classification_directory = $config->{protein_classification_directory};
+my $orgFile = "$protein_classification_directory/$org";
 open (FH, $orgFile);
 while (my $line=<FH>){
     chomp $line;
